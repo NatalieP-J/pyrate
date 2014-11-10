@@ -59,6 +59,84 @@ indeps = {'Menc':'r','psi':'r','Jc2':'E','lg':'E','bG':'E','f':'E','rho':'r',
 #create null file object
 devnull = open(os.devnull,'w')
 
+def displaycheck():
+    """
+    Check if a display is available.
+    Return True if it is, return False if it isn't.
+    """
+    os.system('echo $DISPLAY > tempdisplay')
+    displays = loaddata('tempdisplay')
+    os.system('rm -f tempdisplay')
+    display = displays[0]
+    if display == '':
+        return False
+    elif display != '':
+        return True
+
+def existcheck(directory,dcheck):
+    """
+    Check which functions have already been created and generate a dictionary. 
+     This dictionary tells you which functions are available for loading 
+    or plotting.
+    """
+    #tells compute whether or not to generate the function
+    seton = {}
+    #tells compute whether or not to plot the function
+    plottinglist = {}
+    #holds True or False for each function to ensure that a failure in an early
+    #function means later ones will not be computed
+    gvals = {}
+    strnames = ['Menc','psi','Jc2','g','G','f','dgdlnrp']
+    #prerequesite functions for each of the six in order of strnames
+    prereqs = [[],['Menc'],['Menc','psi'],['psi'],['psi','g'],['Menc','psi'],
+               ['Jc2','G','f']]
+    #array holding plot values (a list of ['<xlabel>','<ylabel>']
+    pvals = [['r','M'],['r',r'$\psi$'],['E',r'$J_c^2$'],['E','g'],['E','G'],
+             ['E','f'],[r'$u^2$',r'$\frac{dg}{dlnr_p}$']]
+    #for each function, perform the following checks
+    for i in range(len(strnames)):
+        prechecks = array([])
+        #check each prerequesite function exists and has not failed to evaluate
+        for j in range(len(prereqs[i])):
+            prechecks = append(prechecks,gvals[prereqs[i][j]])
+        #prepass is zero iff all prerequesite functions exist
+        prepass = len(prechecks) - len(prechecks[where(prechecks == True)])
+        #try to load in the function from file
+        try:
+            vals = pklread('{0}/{1}.pkl'.format(directory,strnames[i]))
+            gcheck = goodcheck(vals[:,1])
+            gvals[strnames[i]] = gcheck
+            #if this function and all of its prerequesites passed, 
+            #don't reevaluate, and plot if possible
+            if gcheck == True and prepass == 0:
+                seton[strnames[i]] = 'OFF'
+                if dcheck == True:
+                    plottinglist[strnames[i]] = pvals[i]
+                if dcheck == False:
+                    plottinglist[strnames[i]] = False
+            #if this function or one of its prerequesites failed,
+            #don't attempt any sort of evaluation
+            if gcheck != True or prepass != 0:
+                seton[strnames[i]] = 'FAIL'
+                plottinglist[strnames[i]] = False
+        #if function file doesn't exist:
+        except IOError:
+            #add to dictionary that this function 'failed' through nonexistence
+            gvals[strnames[i]] = False
+            #if prerequesites all exist and pass, set this function to evaluate
+            #and plot if possible
+            if prepass == 0:
+                seton[strnames[i]] = 'ON'
+                if dcheck == True:
+                    plottinglist[strnames[i]] = pvals[i]
+                if dcheck == False:
+                    plottinglist[strnames[i]] = False
+            #if prerequesites fail, fail this function as well
+            if prepass != 0:
+                seton[strnames[i]] = 'FAIL'
+                plottinglist[strnames[i]] = False
+    return seton,plottinglist
+
 def loaddata(fname):
     """
     Opens a file with name fname with any sort of content and splits on 

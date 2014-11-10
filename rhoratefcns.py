@@ -34,7 +34,7 @@ def funcMenc(r,prereqs):
     """
     r - radius
     prereqs - list containing model class instance
-    
+   
     Returns the enclosed stellar mass at r and a list of problem points.
     """
     model, = prereqs
@@ -402,7 +402,7 @@ def funcbG(E,prereqs):
         return temp[0],problem
 
 def funcbG2(E,prereqs):
-     """
+    """
     E - energy
     prereqs - a list containing the model class instance and functional forms
               for psi and little g
@@ -505,7 +505,7 @@ def Rlc(r,prereqs):
 
 ########******************* IMPORT DATA TABLES *******************########
 
-bessel = BesselGen(['alpham_table.pkl','xi_table.txt','Bessel_table.txt','mpiece_table.txt'])
+bessel = BesselGen(['tables/alpham_table.pkl','tables/xi_table.txt','tables/Bessel_table.txt','tables/mpiece_table.txt'])
 
 ########******************* RATE *******************########
 

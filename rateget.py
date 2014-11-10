@@ -1,8 +1,7 @@
 from numpy import *
 from rhoratefcns import *
-
 import os
-from construction import loaddata
+from construction import loaddata,pklread,displaycheck,existcheck
 from construction import pklread
 
 #standard independent variable array
@@ -15,84 +14,6 @@ rtest = 10**rtest
 utest = arange(-7,0,0.01)
 utest = insert(utest,0,-40)
 utest = 10**utest
-
-def displaycheck():
-    """
-    Check if a display is available.
-    Return True if it is, return False if it isn't.
-    """
-    os.system('echo $DISPLAY > tempdisplay')
-    displays = loaddata('tempdisplay')
-    os.system('rm -f tempdisplay')
-    display = displays[0]
-    if display == '':
-        return False
-    elif display != '':
-        return True
-
-def existcheck(directory,dcheck):
-    """
-    Check which functions have already been created and generate a dictionary. 
-     This dictionary tells you which functions are available for loading 
-    or plotting.
-    """
-    #tells compute whether or not to generate the function
-    seton = {}
-    #tells compute whether or not to plot the function
-    plottinglist = {}
-    #holds True or False for each function to ensure that a failure in an early
-    #function means later ones will not be computed
-    gvals = {}
-    strnames = ['Menc','psi','Jc2','g','G','f','dgdlnrp']
-    #prerequesite functions for each of the six in order of strnames
-    prereqs = [[],['Menc'],['Menc','psi'],['psi'],['psi','g'],['Menc','psi'],
-               ['Jc2','G','f']]
-    #array holding plot values (a list of ['<xlabel>','<ylabel>']
-    pvals = [['r','M'],['r',r'$\psi$'],['E',r'$J_c^2$'],['E','g'],['E','G'],
-             ['E','f'],[r'$u^2$',r'$\frac{dg}{dlnr_p}$']]
-    #for each function, perform the following checks
-    for i in range(len(strnames)):
-        prechecks = array([])
-        #check each prerequesite function exists and has not failed to evaluate
-        for j in range(len(prereqs[i])):
-            prechecks = append(prechecks,gvals[prereqs[i][j]])
-        #prepass is zero iff all prerequesite functions exist
-        prepass = len(prechecks) - len(prechecks[where(prechecks == True)])
-        #try to load in the function from file
-        try:
-            vals = pklread('{0}/{1}.pkl'.format(directory,strnames[i]))
-            gcheck = goodcheck(vals[:,1])
-            gvals[strnames[i]] = gcheck
-            #if this function and all of its prerequesites passed, 
-            #don't reevaluate, and plot if possible
-            if gcheck == True and prepass == 0:
-                seton[strnames[i]] = 'OFF'
-                if dcheck == True:
-                    plottinglist[strnames[i]] = pvals[i]
-                if dcheck == False:
-                    plottinglist[strnames[i]] = False
-            #if this function or one of its prerequesites failed,
-            #don't attempt any sort of evaluation
-            if gcheck != True or prepass != 0:
-                seton[strnames[i]] = 'FAIL'
-                plottinglist[strnames[i]] = False
-        #if function file doesn't exist:
-        except IOError:
-            #add to dictionary that this function 'failed' through nonexistence
-            gvals[strnames[i]] = False
-            #if prerequesites all exist and pass, set this function to evaluate
-            #and plot if possible
-            if prepass == 0:
-                seton[strnames[i]] = 'ON'
-                if dcheck == True:
-                    plottinglist[strnames[i]] = pvals[i]
-                if dcheck == False:
-                    plottinglist[strnames[i]] = False
-            #if prerequesites fail, fail this function as well
-            if prepass != 0:
-                seton[strnames[i]] = 'FAIL'
-                plottinglist[strnames[i]] = False
-    return seton,plottinglist
             
 def getrate(model,partial = False):
     """
@@ -133,14 +54,14 @@ def getrate(model,partial = False):
                 'f':[model.b-1.5,model.g-1.5],'dgdlnrp':[2,0]}
 
         sh = {'Menc':[4,-6,0.03],'psi':[4.3,-6,0.03],'Jc2':[3,-4,0.01],
-              'g':[3,-3,0.1],'G':[3,-3,0.1],'f':[5,-3,0.03],'rate':[0,-4,0.04]}
+              'g':[3,-3,0.1],'G':[3,-3,0.1],'f':[5,-3,0.03],'dgdlnrp':[0,-4,0.04]}
 
         #begin output
         model.statfile.write('GALAXY: {0}\n'.format(model.name))
 
         #evaluate Menc
         model.statfile.write('Menc:\n')
-        up,down,step = sh[Menc]
+        up,down,step = sh['Menc']
         rarray,rchange,rstart = rgrid([model],up,down,step)
         Mencgood = compute([model],funcMenc,rtest,sh['Menc'],rgrid,exps['Menc'],
                            plottinglist['Menc'],seton['Menc'])
@@ -242,9 +163,10 @@ def getrate(model,partial = False):
         model.statfile.close()
         model.pdfdump.close()
         #if all functions were plotted, change name of pdf
-        if plottinglist == {Menc:['r','M'],psi:['r',r'$\psi$'],
-                            Jc2:['E',r'$J_c^2$'],g:['E','g'],G:['E','G'],
-                            f:['E','f'],rate:[r'$u^2$',r'$\frac{dg}{dlnr_p}$']}:
+        if plottinglist == {'Menc':['r','M'],'psi':['r',r'$\psi$'],
+                                'Jc2':['E',r'$J_c^2$'],'g':['E','g'],
+                                'G':['E','G'],'f':['E','f'],
+                                'dgdlnrp':[r'$u^2$',r'$\frac{dg}{dlnr_p}$']}:
             oldname = '{0}/{1}_master.pdf'.format(model.directory,model.name)
             newname = '{0}/{1}_complete.pdf'.format(model.directory,model.name)
             os.system('mv {0} {1}'.format(oldname,newname))
@@ -268,10 +190,10 @@ if __name__ == '__main__':
     rho0 = 1e5
     MBH_Msun = 1e3
     name = 'testform'
-    GENERATE = False
+    GENERATE = True
     from rhomodels import NukerModelRho
     model = NukerModelRho(name,alpha,beta,gamma,r0pc,rho0,MBH_Msun,GENERATE,memo = False)
-    Mencgood,psigood,Jc2good,ggood,Ggood,fgood = getrateplot(model)
+    Mencgood,psigood,Jc2good,ggood,Ggood,fgood = getrate(model)
 
 
 

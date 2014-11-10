@@ -1,4 +1,3 @@
-
 from numpy import *
 import math
 from subprocess import call
