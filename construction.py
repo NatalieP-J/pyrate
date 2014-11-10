@@ -116,9 +116,13 @@ def existcheck(directory,dcheck):
                     plottinglist[strnames[i]] = False
             #if this function or one of its prerequesites failed,
             #don't attempt any sort of evaluation
-            if gcheck != True or prepass != 0:
+            elif gcheck != True:
                 seton[strnames[i]] = 'FAIL'
                 plottinglist[strnames[i]] = False
+            elif prepass != 0:
+                seton[strnames[i]] = 'ON'
+                for k in range(len(prereqs[i])):
+                    seton[prereqs[i][k]] = 'ON'
         #if function file doesn't exist:
         except IOError:
             #add to dictionary that this function 'failed' through nonexistence
@@ -133,7 +137,9 @@ def existcheck(directory,dcheck):
                     plottinglist[strnames[i]] = False
             #if prerequesites fail, fail this function as well
             if prepass != 0:
-                seton[strnames[i]] = 'FAIL'
+                for k in range(len(prereqs[i])):
+                    seton[prereqs[i][k]] = 'ON'
+                seton[strnames[i]] = 'ON'
                 plottinglist[strnames[i]] = False
     return seton,plottinglist
 

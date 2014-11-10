@@ -390,7 +390,7 @@ def funcbG(E,prereqs):
         Gans = []
         problems = []
         for i in range(len(E)):
-            print i+1, 'of', len(E)
+            #print i+1, 'of', len(E)
             rapoval = rapo(E[i],[psigood])
             temp = intg.dblquad(bGinterior,0,rapoval,lambda r: 1e-4, lambda r: 1,args = (E[i],prereqs))
             Gans.append(temp[0])

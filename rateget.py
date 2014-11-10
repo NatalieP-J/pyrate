@@ -1,8 +1,6 @@
 from numpy import *
 from rhoratefcns import *
-import os
 from construction import loaddata,pklread,displaycheck,existcheck
-from construction import pklread
 
 #standard independent variable array
 rtest = arange(-7,7,0.01)
@@ -18,7 +16,7 @@ utest = 10**utest
 def getrate(model,partial = False):
     """
     partial - option to manually set which functions to create
-    Generate rate function for <model> according to seton, and plot if possible.
+    Generate rate function for <model> and plot if possible.
     """
     #check if display is on
     dcheck = displaycheck()
@@ -190,7 +188,7 @@ if __name__ == '__main__':
     rho0 = 1e5
     MBH_Msun = 1e3
     name = 'testform'
-    GENERATE = True
+    GENERATE = False
     from rhomodels import NukerModelRho
     model = NukerModelRho(name,alpha,beta,gamma,r0pc,rho0,MBH_Msun,GENERATE,memo = False)
     Mencgood,psigood,Jc2good,ggood,Ggood,fgood = getrate(model)
