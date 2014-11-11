@@ -86,30 +86,33 @@ def existcheck(directory,dcheck):
     #holds True or False for each function to ensure that a failure in an early
     #function means later ones will not be computed
     gvals = {}
-    strnames = ['Menc','psi','Jc2','g','G','f','dgdlnrp']
+    strnames = ['Menc','psi','Jc2','lg','bG','f','dgdlnrp']
     #prerequesite functions for each of the six in order of strnames
-    prereqs = [[],['Menc'],['Menc','psi'],['psi'],['psi','g'],['Menc','psi'],
-               ['Jc2','G','f']]
+    prereqs = [[],['Menc'],['Menc','psi'],['psi'],['psi','lg'],['Menc','psi'],
+               ['Jc2','bG','f']]
     #array holding plot values (a list of ['<xlabel>','<ylabel>']
     pvals = [['r','M'],['r',r'$\psi$'],['E',r'$J_c^2$'],['E','g'],['E','G'],
              ['E','f'],[r'$u^2$',r'$\frac{dg}{dlnr_p}$']]
     #for each function, perform the following checks
     for i in range(len(strnames)):
+        print 'Function check:',strnames[i]
         prechecks = array([])
         #check each prerequesite function exists and has not failed to evaluate
         for j in range(len(prereqs[i])):
             prechecks = append(prechecks,gvals[prereqs[i][j]])
-        #prepass is zero iff all prerequesite functions exist
+        #prepass is zero iff all prerequesite functions exist and pass goodcheck
         prepass = len(prechecks) - len(prechecks[where(prechecks == True)])
         #try to load in the function from file
         try:
             vals = pklread('{0}/{1}.pkl'.format(directory,strnames[i]))
+            print 'Opened'
+            seton[strnames[i]] = 'OFF'
+            #check that all values are non-nan and positive
             gcheck = goodcheck(vals[:,1])
             gvals[strnames[i]] = gcheck
             #if this function and all of its prerequesites passed, 
             #don't reevaluate, and plot if possible
-            if gcheck == True and prepass == 0:
-                seton[strnames[i]] = 'OFF'
+            if gcheck == True:
                 if dcheck == True:
                     plottinglist[strnames[i]] = pvals[i]
                 if dcheck == False:
@@ -119,12 +122,10 @@ def existcheck(directory,dcheck):
             elif gcheck != True:
                 seton[strnames[i]] = 'FAIL'
                 plottinglist[strnames[i]] = False
-            elif prepass != 0:
-                seton[strnames[i]] = 'ON'
-                for k in range(len(prereqs[i])):
-                    seton[prereqs[i][k]] = 'ON'
         #if function file doesn't exist:
-        except IOError:
+        except IOError as e:
+            print 'Failed to open'
+            print e
             #add to dictionary that this function 'failed' through nonexistence
             gvals[strnames[i]] = False
             #if prerequesites all exist and pass, set this function to evaluate
@@ -137,10 +138,22 @@ def existcheck(directory,dcheck):
                     plottinglist[strnames[i]] = False
             #if prerequesites fail, fail this function as well
             if prepass != 0:
+                construct = []
                 for k in range(len(prereqs[i])):
-                    seton[prereqs[i][k]] = 'ON'
-                seton[strnames[i]] = 'ON'
-                plottinglist[strnames[i]] = False
+                    if seton[prereqs[i][k]] == 'ON' or seton[prereqs[i][k]] == 'OFF':
+                        construct.append(True)
+                    else:
+                        construct.append(False)
+                print 'construct = ',construct
+                if all(construct) == True:
+                    seton[strnames[i]] = 'ON'
+                    if dcheck == True:
+                        plottinglist[strnames[i]] = pvals[i]
+                    if dcheck == False:
+                        plottinglist[strnames[i]] = False
+                elif any(construct) == False:
+                    seton[strnames[i]] = 'FAIL'
+                    plottinglist[strnames[i]] = False
     return seton,plottinglist
 
 def loaddata(fname):
