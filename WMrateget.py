@@ -3,7 +3,7 @@ from subprocess import call
 from matplotlib.backends.backend_pdf import PdfPages
 from rateget import *
 from construction import fromfileplot
-from rhomodels import NukerModelGenRho,NukerModel,Rho
+from rhomodels import NukerModelGenRho,NukerModelRho
 import sys
 from loadWM import getWM
 
@@ -12,7 +12,7 @@ m = int(sys.argv[2])
 
 WM,names,dists,rbs,mubs,alphas,betas,gammas,M2Ls,MBH1s,MBH2s = getWM()
 
-GENERATE = False
+GENERATE = True
 
 name = names[i]
 alpha = alphas[i]
