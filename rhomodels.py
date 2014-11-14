@@ -7,6 +7,7 @@ from suppressor import RedirectStdStreams
 import os
 from matplotlib.backends.backend_pdf import PdfPages
 import time
+from construction import piecewise
 
 mos = {1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'May',6:'Jun',7:'Jul',8:'Aug',9:'Sep',10:'Oct',11:'Nov',12:'Dec'}
 
@@ -272,11 +273,11 @@ class NukerModelGenRho:
             inter0 = interp1d(log10(rtest),log10(tab1))
             inter1 = interp1d(log10(rtest),log10(tab2))
             inter2 = interp1d(log10(rtest),log10(tab3))
-            piecerho = piecewise2(rtest1,inter0,tab1[0],tab1[len(tab1)-1],rtest[0],rtest[len(rtest)-1],-self.g,-self.b)
+            piecerho = piecewise(rtest1,inter0,tab1[0],tab1[len(tab1)-1],rtest[0],rtest[len(rtest)-1],-self.g,-self.b)
             self.inter0 = interp1d(log10(rtest1),log10(piecerho))
-            piecedrhodr = piecewise2(rtest1,inter1,tab2[0],tab2[len(tab2)-1],rtest[0],rtest[len(rtest)-1],-self.g-1,-self.b-1)
+            piecedrhodr = piecewise(rtest1,inter1,tab2[0],tab2[len(tab2)-1],rtest[0],rtest[len(rtest)-1],-self.g-1,-self.b-1)
             self.inter1 = interp1d(log10(rtest1),log10(piecedrhodr))
-            pieced2rhodr2 = piecewise2(rtest1,inter2,tab3[0],tab3[len(tab3)-1],rtest[0],rtest[len(rtest)-1],-self.g-2,-self.b-2)
+            pieced2rhodr2 = piecewise(rtest1,inter2,tab3[0],tab3[len(tab3)-1],rtest[0],rtest[len(rtest)-1],-self.g-2,-self.b-2)
             self.inter2 = interp1d(log10(rtest1),log10(pieced2rhodr2))
             pklwrite('{0}/{1}.pkl'.format(self.directory,'rho'),column_stack((rtest1,piecerho)))
             pklwrite('{0}/{1}.pkl'.format(self.directory,'drhodr'),column_stack((rtest1,piecedrhodr)))
