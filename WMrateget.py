@@ -19,14 +19,14 @@ alpha = alphas[i]
 beta = betas[i]
 gamma = gammas[i]
 M2L = M2Ls[i]
-MBH_Msun = m
+MBH_Msun = 10**m
 rb = rbs[i]
 mub = mubs[i]
 rho0 = findrho0(rb,M2L,mub)
 model1 = NukerModelGenRho('{0}_gen'.format(name),alpha,beta,gamma,rb,rho0,MBH_Msun,GENERATE,memo = False)
 model1.getrho()
 model2 = NukerModelRho('{0}'.format(name),alpha,beta,gamma,rb,rho0,MBH_Msun,GENERATE,memo = False)
-result = getrate(model1)
+result = getrate(model2)
 
 
 

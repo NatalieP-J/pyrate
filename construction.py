@@ -569,6 +569,7 @@ def fromfileplotall(galname):
     Plots all six functions for chosen directory.
 
     """
+    name = galname
     #make standard independent variable array
     r = arange(-4,4,0.01)
     r = 10**r
@@ -644,6 +645,7 @@ def fromfileplotall(galname):
         plt.ylabel(r'$f$')
         plt.title(name)
         plt.show()
+        '''
         dat = pklread('{0}/{1}.pkl'.format(direc,'dgdlnrp'))
         rarray = dat[:,0]
         tab = dat[:,1]
@@ -656,5 +658,6 @@ def fromfileplotall(galname):
         plt.ylabel(r'$d\gamma/d\ln{r_p}$')
         plt.title(name)
         plt.show()
+        '''
     elif success != 0:
         print 'There do not appear to be any directories with that galaxy name, terminating plot'

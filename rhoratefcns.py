@@ -227,17 +227,29 @@ def rapo(E,prereqs):
     Returns the root of rapoimplicit.
     """
     #trial and error provided this as a good way to find an initial guess
-    if E**-1 > 0.2:
-        rguess = 10*E**-1
-    elif E**-1 < 0.2:
-        rguess = 0.01*E**-1
-    rresult = root(rapoimplicit,rguess,args=(E,prereqs))
-    if rresult.success == True:
-        return abs(rresult.x)
-    elif rresult.success == False:
-        print 'Failed to evaluate rapo'
-        print rresult.message
-        return abs(rresult.x)
+    if isinstance(E,(list,ndarray)):
+        rresults = []
+        rguesses = zeros(len(E))
+        large = where(E**-1 > 0.2)
+        small = where(E**-1 < 0.2)
+        rguesses[small] += 0.01*E[small]**-1
+        rguesses[large] += 10*E[large]**-1
+        for i in range(len(E)):
+            rresult = root(rapoimplicit,rguesses[i],args = (E[i],prereqs))
+            rresults.append(abs(rresult.x))
+        return array(rresults)
+    elif isinstance(E,(float,int)):
+        if E**-1 > 0.2:
+            rguess = 10*E**-1
+        elif E**-1 < 0.2:
+            rguess = 0.01*E**-1
+        rresult = root(rapoimplicit,rguess,args=(E,prereqs))
+        if rresult.success == True:
+            return abs(rresult.x)
+        elif rresult.success == False:
+            print 'Failed to evaluate rapo'
+            print rresult.message
+            return abs(rresult.x)
 
 ########******************* CIRCULAR ANGULAR MOMENTUM *******************######## 
 
