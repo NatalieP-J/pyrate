@@ -189,7 +189,7 @@ def getrate(model,partial = False):
 if __name__ == '__main__':
 
     alpha = 1.0
-    beta = 4.5
+    beta = 3.5
     gamma = 1.5
     r0pc = 1.0
     rho0 = 1e5
