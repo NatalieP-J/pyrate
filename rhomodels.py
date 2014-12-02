@@ -662,7 +662,7 @@ class SersicModelRho:
         #Coulomb logarithm
         self.Lam = self.MBH*0.4
         #black hole mass normalized to galaxy density and radius
-        self.Mnorm = self.MBH/(self.rho0*(self.r0)**3)
+        self.Mnorm = self.MBH/(self.rho0*(self.Re)**3)
         #tidal disruption radius
         self.rT = Rsun*(self.MBH)**(1./3)
         #number of tidal radii to span galaxy
@@ -672,7 +672,7 @@ class SersicModelRho:
         #start a new directory?
         self.generate = generate
         #directory name
-        self.directory = 'SersicRhoGals/{0}_Rho_n{1}_MBH{2}'.format(self.name,self.n.self.MBH)
+        self.directory = 'SersicRhoGals/{0}_Rho_n{1}_MBH{2}'.format(self.name,self.n,self.MBH)
         call(['mkdir','{0}'.format(self.directory)],stdout = devnull,stderr = devnull)
         timestr = gettime()
         self.statfile = open('{0}/stats_{1}.dat'.format(self.directory,timestr),'wb')
