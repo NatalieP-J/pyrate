@@ -4,8 +4,12 @@ from numpy import *
 from rhoratefcns import *
 from rhomodels import NukerModelRho
 import matplotlib.pyplot as plt
+plt.ion()
 
 Gconst = 6.67259e-8
+realMsun = 1.989e33
+pc = 3.1e18
+yr = 365*24*3600
 
 def period(E,prereq):
     return sqrt((4*(pi**2)*rapo(E,prereq)**3)/Gconst)
@@ -15,10 +19,31 @@ def Rlcint(r,prereq):
     interior = 2*(model.Mnorm/model.r0_rT)*(1./10**Jc2good(log10(r)))
     return interior
 
+def logR0(E,prereq1,prereq2):
+    q = funcq(E,prereq1)
+    if isinstance(E,ndarray) == True:
+        part1 = -(log(Rlc(E[q > 1],prereq2))-q[q > 1])
+        part2 = -(log(Rlc(E[q < 1],prereq2))-0.186*q[q < 1] - 0.824*sqrt(q[q < 1]))
+        return concatenate((part1,part2))
+    elif isinstance(E,ndarray) == False:
+        if q > 1:
+            return Rlc(E,prereq2)*exp(-q)
+        elif q < 1:
+            return Rlc(E,prereq2)*exp(-0.186*q - 0.824*sqrt(q))
+
+def F(E,prereq1,prereq2,prereq3):
+    Jc2good,fgood = prereq3
+    Jconst = Gconst*(model.rho0*realMsun*((model.r0*pc)**-1)*((10*pc)**-2)*(model.r0*pc)**4)
+    qtest = funcq(E,prereq1)
+    vals = np.where(isnan(qtest)==False)
+    E = E[vals]
+    return [E,(100000**2)*4*(pi**2)*(Jconst*10**Jc2good(log10(E)))*funcq(E,prereq1)*Rlcint(E,prereq2)*(fconst*10**fgood(log10(E)))/logR0(E,prereq1,prereq2)]
+    
+
 plotarrays = [arange(0.9,2.1,0.005),arange(0.9,2.1,0.005),arange(0.9,4,0.005),arange(0.9,4,0.005),arange(0.9,4,0.005)]
 
 i1 = 17
-#i2 = ?
+i2 = 30
 
 masses = arange(4,14,2)
 
@@ -26,7 +51,7 @@ M,names,dists,rbs,mubs,alphas,betas,gammas,M2Ls,MBH1s,MBH2s = getWM()
 
 GENERATE = False
 
-for i in [i1]:#,i2]:
+for i in [i1,i2]:
     rapos = []
     fs = []
     qs = []
@@ -45,21 +70,25 @@ for i in [i1]:#,i2]:
     for j in range(len(masses)):
         MBH_Msun = 10**masses[j]
         model = NukerModelRho('{0}'.format(name),alpha,beta,gamma,rb,rho0,MBH_Msun,GENERATE,memo = False)
-        M,psi,Jc2,g,G,f,rate = getrate(model)
-        rapoval = rapo(plotarrays[j],[psi])
-        q = funcq(plotarrays[j],[model,G])
-        R = Rlcint(plotarrays[j],[model,Jc2])
-        P = period(plotarrays[j],[psi])
+        partial =[ {'Menc':'OFF','psi':'OFF','Jc2':'OFF','lg':'OFF','bG':'OFF','f':'OFF','dgdlnrp':'FAIL'},{'Menc':False,'psi':False,'Jc2':False,'lg':False,'bG':False,'f':False,'dgdlnrp':False}]
+        M,psi,Jc2,g,G,f,rate = getrate(model,partial)
+        fconst = (sqrt((Gconst**3)*model.rho0*realMsun*((model.r0*pc)**-1)*((10*pc)**-2))*realMsun*((model.r0*pc)**3))**-1
+        rapoval = rapo(10**plotarrays[j],[psi])
+        q = funcq(10**plotarrays[j],[model,G])
+        R = Rlcint(10**plotarrays[j],[model,Jc2])
+        P = period(10**plotarrays[j],[psi])
+        Fval = F(10**plotarrays[j],[model,G],[model,Jc2],[Jc2,f])
         rapos.append(rapoval)
         fs.append(f(plotarrays[j]))
         qs.append(q)
         Ps.append(P)
         Rlcs.append(R)
+        Fs.append(Fval)
     plt.figure()
     plt.suptitle(name)
     plt.subplot(326)
-    #for i in range(len(rapos)):
-    #    plt.loglog(Fs[j][0],Fs[j][1]*yr,label = 'MBH {0}'.format(masses[i]))
+    for k in range(len(rapos)):
+        plt.loglog(Fs[k][0],Fs[k][1]*yr,label = 'MBH {0}'.format(masses[k]))
     plt.xlabel('E')
     plt.ylabel(r'F')
     plt.subplot(322)
@@ -83,7 +112,7 @@ for i in [i1]:#,i2]:
     plt.xlabel('E')
     plt.ylabel('q')
     plt.subplot(324)
-    for i in range(len(Rlcs)):
+    for k in range(len(Rlcs)):
         plt.loglog(10**plotarrays[k],Rlcs[k],label = 'log10(mass) = {0}'.format(masses[k]))
     plt.xlabel('E')
     plt.ylabel(r'$R_{lc}$')
