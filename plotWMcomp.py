@@ -51,7 +51,7 @@ M,names,dists,rbs,mubs,alphas,betas,gammas,M2Ls,MBH1s,MBH2s = getWM()
 
 GENERATE = False
 
-for i in [i1,i2]:
+for i in [i1]:#,i2]:
     rapos = []
     fs = []
     qs = []
@@ -67,12 +67,17 @@ for i in [i1,i2]:
     mub = mubs[i]
     rho0 = findrho0(rb,M2L,mub)
     dist = dists[i]
+    Earrays =[]
     for j in range(len(masses)):
         MBH_Msun = 10**masses[j]
         model = NukerModelRho('{0}'.format(name),alpha,beta,gamma,rb,rho0,MBH_Msun,GENERATE,memo = False)
         partial =[ {'Menc':'OFF','psi':'OFF','Jc2':'OFF','lg':'OFF','bG':'OFF','f':'OFF','dgdlnrp':'FAIL'},{'Menc':False,'psi':False,'Jc2':False,'lg':False,'bG':False,'f':False,'dgdlnrp':False}]
         M,psi,Jc2,g,G,f,rate = getrate(model,partial)
-        fconst = (sqrt((Gconst**3)*model.rho0*realMsun*((model.r0*pc)**-1)*((10*pc)**-2))*realMsun*((model.r0*pc)**3))**-1
+        r0real = model.r0*pc
+        rho0real = model.rho0*(realMsun/pc**3)
+        Econst = Gconst*rho0real*r0real**2/1e14
+        Earrays.append(Econst*(10**plotarrays[j]))
+        fconst = (sqrt((Gconst**3)*model.rho0)*realMsun*((r0real)**3))**-1
         rapoval = rapo(10**plotarrays[j],[psi])
         q = funcq(10**plotarrays[j],[model,G])
         R = Rlcint(10**plotarrays[j],[model,Jc2])
@@ -86,32 +91,32 @@ for i in [i1,i2]:
         Fs.append(Fval)
     plt.figure()
     plt.suptitle(name)
-    plt.subplot(326)
+    plt.subplot(326,adjustable = 'box',aspect = 0.1)
     for k in range(len(rapos)):
-        plt.loglog(Fs[k][0],Fs[k][1]*yr,label = 'MBH {0}'.format(masses[k]))
+        plt.plot(log(Fs[k][0]),log(Fs[k][1]*yr),label = 'MBH {0}'.format(masses[k]))
     plt.xlabel('E')
     plt.ylabel(r'F')
-    plt.subplot(322)
+    plt.subplot(322,aspect = 1)
     for k in range(len(rapos)):
         plt.loglog(10**plotarrays[k],Ps[k],label = 'log10(mass) = {0}'.format(masses[k]))
     plt.xlabel('E')
     plt.ylabel(r'P')
-    plt.subplot(321)
+    plt.subplot(321,aspect = 1)
     for k in range(len(rapos)):
         plt.loglog(10**plotarrays[k],rapos[k]/(dist*1000),label = 'log10(mass) = {0}'.format(masses[k]))
     plt.xlabel('E')
     plt.ylabel(r'$r_{apo}$["]')
-    plt.subplot(323)
+    plt.subplot(323,aspect = 1)
     for k in range(len(fs)):
-        plt.loglog(10**plotarrays[k],10**fs[k],label = 'log10(mass) = {0}'.format(masses[k]))
+        plt.loglog(Earrays[k],10**fs[k],label = 'log10(mass) = {0}'.format(masses[k]))
     plt.xlabel('E')
     plt.ylabel('f')
-    plt.subplot(325)
+    plt.subplot(325,aspect = 1)
     for k in range(len(qs)):
         plt.loglog(10**plotarrays[k],qs[k],label = 'log10(mass) = {0}'.format(masses[k]))
     plt.xlabel('E')
     plt.ylabel('q')
-    plt.subplot(324)
+    plt.subplot(324,aspect = 1)
     for k in range(len(Rlcs)):
         plt.loglog(10**plotarrays[k],Rlcs[k],label = 'log10(mass) = {0}'.format(masses[k]))
     plt.xlabel('E')
