@@ -26,6 +26,7 @@ def getrate(model,partial = False):
         #if not asked to generate, automatically decide what to evaluate
         if model.generate == False:
             seton,plottinglist = existcheck(model.directory,dcheck)
+            #print 'seton = ', seton
         
         #if asked to generate, create everything and plot if possible
         elif model.generate == True:
@@ -45,7 +46,7 @@ def getrate(model,partial = False):
         seton = partial[0] 
         plottinglist = partial[1]  
     try:
-        print seton,plottinglist
+        #print seton,plottinglist
         #dictionary of power law behaviour
         exps = {'Menc':[3-model.g,0],'psi':[-1,-1],'Jc2':[-1,-1],
                 'lg':[model.b-0.5,model.g-0.5],'bG':[model.b-4,model.g-4],
@@ -61,10 +62,10 @@ def getrate(model,partial = False):
         model.statfile.write('Menc:\n')
         up,down,step = sh['Menc']
         rarray,rchange,rstart = rgrid([model],up,down,step)
-        print 'Start Mencgood'
+        #print 'Start Mencgood'
         Mencgood = compute([model],funcMenc,rtest,sh['Menc'],rgrid,exps['Menc'],
                            plottinglist['Menc'],seton['Menc'])
-        print 'End Mencgood'
+        #print 'End Mencgood'
         #if failed at Menc, abort computation of further functions
         if Mencgood == 0:
             model.statfile.write('Failed to evaluate Menc')
@@ -74,10 +75,10 @@ def getrate(model,partial = False):
         #evaluate psi
         pprereqs = [model,'Model',Mencgood,'Menc']
         model.statfile.write('\npsi:\n')
-        print 'Start psigood'
+        #print 'Start psigood'
         psigood = compute(pprereqs,funcpsi,rtest,sh['psi'],rgrid,exps['psi'],
                           plottinglist['psi'],seton['psi'])
-        print 'End psigood'
+        #print 'End psigood'
         #if failed at psi, abort computation of further functions
         if psigood == 0:
             model.statfile.write('Failed to evaluate psi')
@@ -87,10 +88,10 @@ def getrate(model,partial = False):
         #evaluate Jc2
         Jprereqs = [model,'Model',Mencgood,"Menc",psigood,"psi"]
         model.statfile.write('\nJc2:\n')
-        print 'Start Jc2good'
+        #print 'Start Jc2good'
         Jc2good = compute(Jprereqs,funcJc2,rtest,sh['Jc2'],Egrid,exps['Jc2'],
                           plottinglist['Jc2'],seton['Jc2'])
-        print 'End Jc2good'
+        #print 'End Jc2good'
         #if failed at Jc2, abort computation of further functions
         if Jc2good == 0:
             model.statfile.write('Failed to evaluate Jc2')
@@ -100,10 +101,10 @@ def getrate(model,partial = False):
         #evaluate g
         lgprereqs = [model,'Model',psigood,"psi"]
         model.statfile.write('\ng:\n')
-        print 'Start ggood'
+        #print 'Start ggood'
         ggood = compute(lgprereqs,funclg,rtest,sh['lg'],Egrid,exps['lg'],
                         plottinglist['lg'],seton['lg'])
-        print 'End ggood'
+        #print 'End ggood'
         #if failed at g, abort computation of further functions
         if ggood == 0:
             model.statfile.write('Failed to evaluate g')
@@ -119,10 +120,10 @@ def getrate(model,partial = False):
         Gtest = 10**Gtest
                         
         model.statfile.write('\nG:\n')
-        print 'Start Gggood'
+        #print 'Start Gggood'
         Ggood = compute(bGprereqs,funcbG,Gtest,sh['bG'],Egrid,exps['bG'],
                         plottinglist['bG'],seton['bG'])
-        print 'End Ggood'
+        #print 'End Ggood'
         if model.memo == True:
             model.p1bG = {}
             model.p2bG = {}
@@ -143,10 +144,10 @@ def getrate(model,partial = False):
         ftest = 10**ftest
         
         model.statfile.write('\nf:\n')
-        print 'Start fgood'
+        #print 'Start fgood'
         fgood = compute(fprereqs,funcf,ftest,sh['f'],Egrid,exps['f'],
                         plottinglist['f'],seton['f'])
-        print 'End fgood'
+        #print 'End fgood'
         #if failed at f, abort computation of further functions
         if fgood == 0:
             model.statfile.write('Failed to evaluate f')
@@ -156,11 +157,11 @@ def getrate(model,partial = False):
         #evaluate dgdlnrp
         rprereqs = [model,'Model',Jc2good,'Jc2',Ggood,'Ggood',fgood,'fgood']
         model.statfile.write('\nrate:\n')
-        print 'Start rate'
+        #print 'Start rate'
         rategood = compute(rprereqs,funcdgdlnrp,utest,sh['dgdlnrp'],stdgrid,
                            exps['dgdlnrp'],plottinglist['dgdlnrp'],
                            seton['dgdlnrp'])
-        print 'End rate'
+        #print 'End rate'
         if rategood == 0:
             model.statfile.write('Failed to evaluate dgdlnrp')
         

@@ -95,7 +95,7 @@ def existcheck(directory,dcheck):
              ['E','f'],[r'$u^2$',r'$\frac{dg}{dlnr_p}$']]
     #for each function, perform the following checks
     for i in range(len(strnames)):
-        print 'Function check:',strnames[i]
+        #print 'Function check:',strnames[i]
         prechecks = array([])
         #check each prerequesite function exists and has not failed to evaluate
         for j in range(len(prereqs[i])):
@@ -105,7 +105,7 @@ def existcheck(directory,dcheck):
         #try to load in the function from file
         try:
             vals = pklread('{0}/{1}.pkl'.format(directory,strnames[i]))
-            print 'Opened'
+            #print 'Opened',strnames[i]
             seton[strnames[i]] = 'OFF'
             #check that all values are non-nan and positive
             gcheck = goodcheck(vals[:,1])
@@ -124,8 +124,7 @@ def existcheck(directory,dcheck):
                 plottinglist[strnames[i]] = False
         #if function file doesn't exist:
         except IOError as e:
-            print 'Failed to open'
-            print e
+            #print 'Failed to open',strnames[i]
             #add to dictionary that this function 'failed' through nonexistence
             gvals[strnames[i]] = False
             #if prerequesites all exist and pass, set this function to evaluate
@@ -142,16 +141,15 @@ def existcheck(directory,dcheck):
                 for k in range(len(prereqs[i])):
                     if seton[prereqs[i][k]] == 'ON' or seton[prereqs[i][k]] == 'OFF':
                         construct.append(True)
-                    else:
+                    elif seton[prereqs[i][k]] == 'FAIL':
                         construct.append(False)
-                print 'construct = ',construct
                 if all(construct) == True:
                     seton[strnames[i]] = 'ON'
                     if dcheck == True:
                         plottinglist[strnames[i]] = pvals[i]
                     if dcheck == False:
                         plottinglist[strnames[i]] = False
-                elif any(construct) == False:
+                else:
                     seton[strnames[i]] = 'FAIL'
                     plottinglist[strnames[i]] = False
     return seton,plottinglist

@@ -662,7 +662,7 @@ class SersicModelRho:
         #Coulomb logarithm
         self.Lam = self.MBH*0.4
         #black hole mass normalized to galaxy density and radius
-        self.Mnorm = self.MBH/(self.rho0*(self.Re)**3)
+        self.Mnorm = self.MBH/(self.rho0*(self.r0)**3)
         #tidal disruption radius
         self.rT = Rsun*(self.MBH)**(1./3)
         #number of tidal radii to span galaxy
@@ -689,10 +689,10 @@ class SersicModelRho:
     #and its first
     def drhodr(self,r):
         pre = (r**-self.p)*exp(-self.b*(r**(1./self.n)))*((self.n*r)**-1)
-        post = (self.n*self.p)+self.b*(r**(1./n))
+        post = (self.n*self.p)+self.b*(r**(1./self.n))
         return pre*post
     #and second derivatives
     def d2rhodr2(self,r):
-        pre = (r**-p)*exp(-b*(r**(1./self.n)))*((self.n*r)**-2)
-        post = (self.p*(1+self.p)*self.n**2) + self.b*(-1 + self.n + 2*self.n*self.p)*(r**(1./n)) + (b**2)*(r**-p)
+        pre = (r**-self.p)*exp(-self.b*(r**(1./self.n)))*((self.n*r)**-2)
+        post = (self.p*(1+self.p)*self.n**2) + self.b*(-1 + self.n + 2*self.n*self.p)*(r**(1./self.n)) + (self.b**2)*(r**-self.p)
         return pre*post
