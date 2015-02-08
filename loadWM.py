@@ -45,3 +45,5 @@ if __name__ == '__main__':
 		GENERATE = False
 		model1 = NukerModelRho(name1,alpha,beta,gamma,r0pc,rho0,MBH_Msun1,GENERATE,memo = False)
 		result1 = getrate(model1)
+		model2 = NukerModelRho(name2,alpha,beta,gamma,r0pc,rho0,MBH_Msun2,GENERATE,memo = False)
+		result2 = getrate(model2)

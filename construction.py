@@ -65,13 +65,16 @@ def displaycheck():
     Return True if it is, return False if it isn't.
     """
     os.system('echo $DISPLAY > tempdisplay')
-    displays = loaddata('tempdisplay')
-    os.system('rm -f tempdisplay')
-    display = displays[0]
-    if display == '':
+    try:
+        displays = loaddata('tempdisplay')
+        os.system('rm -f tempdisplay')
+        display = displays[0]
+        if display == '':
+            return False
+        elif display != '':
+            return True
+    except (IndexError, IOError):
         return False
-    elif display != '':
-        return True
 
 def existcheck(directory,dcheck):
     """

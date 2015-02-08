@@ -1,14 +1,7 @@
 #!/bin/bash
 
-for((m=4;m<=12;m+=2));
+for((i=1;i<42;i++));
 do
-python rewriteWMsmall.py 17 $m;
+python rewriteWMsmall.py $i;
 qsub runWMsmall.sh;
 done
-
-for((m=4;m<=12;m+=2));
-do
-python rewriteWMsmall.py 30 $m;
-qsub runWMsmall.sh;
-done
-

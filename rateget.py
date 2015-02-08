@@ -51,7 +51,7 @@ def getrate(model,partial = False):
         exps = {'psi':[-1,-1],'Jc2':[-1,-1],
                 'lg':[model.b-0.5,model.g-0.5],'bG':[model.b-4,model.g-4],
                 'f':[model.b-1.5,model.g-1.5],'dgdlnrp':[2,0]}
-        exps = {'Jc2':[-1,-1]}
+        exps = {'Jc2':[-1,-1],'dgdlnrp':[2,0]}
         
         if -model.b < -3:
             exps['Menc'] = [3-model.g,0]

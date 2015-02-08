@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "WMrateget.py", line 16, in <module>
-    name = names[i]
-ValueError: field named 24 not found
