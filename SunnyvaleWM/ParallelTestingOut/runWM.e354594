@@ -1,0 +1,31 @@
+/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rhomodels.py:213: RuntimeWarning: overflow encountered in double_scalars
+  return (self.I(r)/(r*(1+r**self.a))**3)*((-r**(3*self.a))*self.B*(1+self.B)*(2+self.B) - self.G*(1 + self.G)*(2+self.G) + (r**(2*self.a))*((-1+self.a)*self.B*(4+self.a+3*self.B) - (2+(self.a**2) + 3*self.a*(1+self.B) + 3*self.B*(2+self.B))*self.G) + (r**self.a)*((1+self.a)*(-4+self.a-3*self.G)*self.G - self.B*(2+(self.a**2) - 3*self.a*(1+self.G) + 3*self.G*(2+self.G))))
+/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rhomodels.py:213: RuntimeWarning: invalid value encountered in double_scalars
+  return (self.I(r)/(r*(1+r**self.a))**3)*((-r**(3*self.a))*self.B*(1+self.B)*(2+self.B) - self.G*(1 + self.G)*(2+self.G) + (r**(2*self.a))*((-1+self.a)*self.B*(4+self.a+3*self.B) - (2+(self.a**2) + 3*self.a*(1+self.B) + 3*self.B*(2+self.B))*self.G) + (r**self.a)*((1+self.a)*(-4+self.a-3*self.G)*self.G - self.B*(2+(self.a**2) - 3*self.a*(1+self.G) + 3*self.G*(2+self.G))))
+/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rhomodels.py:213: RuntimeWarning: overflow encountered in double_scalars
+  return (self.I(r)/(r*(1+r**self.a))**3)*((-r**(3*self.a))*self.B*(1+self.B)*(2+self.B) - self.G*(1 + self.G)*(2+self.G) + (r**(2*self.a))*((-1+self.a)*self.B*(4+self.a+3*self.B) - (2+(self.a**2) + 3*self.a*(1+self.B) + 3*self.B*(2+self.B))*self.G) + (r**self.a)*((1+self.a)*(-4+self.a-3*self.G)*self.G - self.B*(2+(self.a**2) - 3*self.a*(1+self.G) + 3*self.G*(2+self.G))))
+/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rhomodels.py:213: RuntimeWarning: invalid value encountered in double_scalars
+  return (self.I(r)/(r*(1+r**self.a))**3)*((-r**(3*self.a))*self.B*(1+self.B)*(2+self.B) - self.G*(1 + self.G)*(2+self.G) + (r**(2*self.a))*((-1+self.a)*self.B*(4+self.a+3*self.B) - (2+(self.a**2) + 3*self.a*(1+self.B) + 3*self.B*(2+self.B))*self.G) + (r**self.a)*((1+self.a)*(-4+self.a-3*self.G)*self.G - self.B*(2+(self.a**2) - 3*self.a*(1+self.G) + 3*self.G*(2+self.G))))
+/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/construction.py:94: RuntimeWarning: invalid value encountered in log10
+  inter = interp1d(log10(rarray),log10(tab))
+/opt/python/2.7.6/lib/python2.7/site-packages/scipy/integrate/quadpack.py:295: UserWarning: The maximum number of subdivisions (50) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+  warnings.warn(msg)
+/opt/python/2.7.6/lib/python2.7/site-packages/scipy/integrate/quadpack.py:295: UserWarning: The maximum number of subdivisions (50) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+  warnings.warn(msg)
+/opt/python/2.7.6/lib/python2.7/site-packages/scipy/integrate/quadpack.py:295: UserWarning: The maximum number of subdivisions (50) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+  warnings.warn(msg)

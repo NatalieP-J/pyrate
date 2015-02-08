@@ -1,0 +1,182 @@
+Saved densities and interpolated
+fraction reporting a message: 0.235795454545
+Mencgood ran in 	 0:00:33.190000
+fraction reporting a message: 1.0
+psigood ran in 	 0:00:49.860000
+fraction reporting a message: 0.872756933116
+Jc2good ran in 	 0:00:04.870000
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last ten iterations.
+fraction reporting a message: 1.0
+lggood ran in 	 0:00:09.510000
+---------------------------------------------------
+Job Resources Requested:
+
+cput=100000:00:00,ncpus=1,neednodes=1:ppn=1,nodes=1:ppn=1,walltime=08:00:00
+---------------------------------------------------
+Job Resources Used:
+
+cput=00:02:29,mem=65804kb,vmem=406004kb,walltime=00:02:41
+---------------------------------------------------
+
+---------------------------------------------------
+Job Script:
+
+#!/bin/csh
+#PBS -l nodes=1:ppn=1
+#PBS -q workq
+#PBS -l walltime=08:00:00
+#PBS -N runWM
+cd $PBS_O_WORKDIR
+module load python/2.7.6
+python WMrateget.py 40
+---------------------------------------------------
+

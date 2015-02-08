@@ -1,0 +1,153 @@
+GALAXY: NGC 4697_1
+Menc:
+
+mesg frac = 0.0
+Mencgood ran in 	 0:00:01.070000
+
+psi:
+psi2,	 i = 0,	 message = The maximum number of subdivisions (50) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+psi2,	 i = 1,	 message = The maximum number of subdivisions (50) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+psi2,	 i = 368,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 369,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 370,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 371,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 372,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 373,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 374,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 375,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 376,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 377,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 378,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 379,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 380,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 381,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 382,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 383,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 384,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 385,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 386,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 387,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 388,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 389,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 390,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 391,	 message = The algorithm does not converge.  Roundoff error is detected
+  in the extrapolation table.  It is assumed that the requested tolerance
+  cannot be achieved, and that the returned result (if full_output = 1) is 
+  the best which can be obtained.
+psi2,	 i = 392,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 393,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 394,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 395,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 396,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 397,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 398,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 399,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 400,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 401,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 402,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 403,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 404,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 405,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 406,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 407,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 408,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 409,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 410,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 411,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 412,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 413,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 414,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 415,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 416,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 417,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 418,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 419,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 420,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 421,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 422,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 423,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 424,	 message = The integral is probably divergent, or slowly convergent.
+
+mesg frac = 0.138823529412
+psigood ran in 	 0:00:02.490000
+
+Jc2:

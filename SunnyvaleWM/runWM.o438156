@@ -1,0 +1,108 @@
+Mencgood loaded in
+psigood loaded in
+Jc2good loaded in
+lggood loaded in
+bGgood loaded in
+fgood loaded in
+fraction reporting a message: 0.0
+dgdlnrpgood ran in 	 0:03:11.080000
+
+fraction reporting a message: 0.0
+Mencgood ran in 	 0:00:00.630000
+fraction reporting a message: 0.279816513761
+psigood ran in 	 0:00:01.440000
+fraction reporting a message: 0.000892857142857
+Jc2good ran in 	 0:00:08.840000
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last five Jacobian evaluations.
+fraction reporting a message: 0.25
+lggood ran in 	 0:00:04.310000
+1 of 52
+2 of 52
+3 of 52
+4 of 52
+5 of 52
+6 of 52
+7 of 52
+8 of 52
+9 of 52
+10 of 52
+11 of 52
+12 of 52
+13 of 52
+14 of 52
+15 of 52
+16 of 52
+17 of 52
+18 of 52
+19 of 52
+20 of 52
+21 of 52
+22 of 52
+23 of 52
+24 of 52
+25 of 52
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last five Jacobian evaluations.
+26 of 52
+27 of 52
+28 of 52
+29 of 52
+30 of 52
+31 of 52
+32 of 52
+33 of 52
+34 of 52
+35 of 52
+36 of 52
+37 of 52
+38 of 52
+39 of 52
+40 of 52
+41 of 52
+42 of 52
+43 of 52
+44 of 52
+45 of 52
+46 of 52
+47 of 52
+48 of 52
+49 of 52
+50 of 52
+51 of 52
+52 of 52
+fraction reporting a message: 0.0
+bGgood ran in 	 5:29:04.940000
+Failed to evaluate rapo
+The iteration is not making good progress, as measured by the 
+  improvement from the last five Jacobian evaluations.
+fraction reporting a message: 0.170833333333
+fgood ran in 	 0:01:21.720000
+fraction reporting a message: 0.0
+dgdlnrpgood ran in 	 0:07:29.830000
+
+---------------------------------------------------
+Job Resources Requested:
+
+cput=100000:00:00,ncpus=1,neednodes=1:ppn=1,nodes=1:ppn=1,walltime=48:00:00
+---------------------------------------------------
+Job Resources Used:
+
+cput=05:41:24,mem=68304kb,vmem=396644kb,walltime=05:41:53
+---------------------------------------------------
+
+---------------------------------------------------
+Job Script:
+
+#!/bin/csh
+#PBS -l nodes=1:ppn=1
+#PBS -q workq
+#PBS -l walltime=48:00:00
+#PBS -N runWM
+cd $PBS_O_WORKDIR
+module load python/2.7.6
+python WMrateget.py 35
+---------------------------------------------------
+

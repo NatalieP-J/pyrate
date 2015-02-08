@@ -1,0 +1,62 @@
+GALAXY: NGC 4564_1
+Menc:
+
+mesg frac = 0.0
+Mencgood ran in 	 0:00:00.940000
+
+psi:
+psi2,	 i = 351,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 352,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 353,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 354,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 355,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 356,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 357,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 358,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 359,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 360,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 361,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 362,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 363,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 364,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 365,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 366,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 367,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 368,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 369,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 370,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 371,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 372,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 373,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 374,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 375,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 376,	 message = The integral is probably divergent, or slowly convergent.
+psi2,	 i = 377,	 message = The integral is probably divergent, or slowly convergent.
+
+mesg frac = 0.0681818181818
+psigood ran in 	 0:00:01.490000
+
+Jc2:
+
+mesg frac = 0.0
+Jc2good ran in 	 0:00:06.150000
+
+g:
+
+mesg frac = 0.0
+lggood ran in 	 0:00:06.140000
+
+G:
+
+mesg frac = 0.0
+bGgood ran in 	 7:43:06.380000
+
+f:
+
+mesg frac = 0.0
+fgood ran in 	 0:01:06.980000
+
+rate:
+
+mesg frac = 0.0
+dgdlnrpgood ran in 	 0:05:51.830000

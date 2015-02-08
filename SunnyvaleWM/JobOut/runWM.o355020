@@ -1,0 +1,28 @@
+Saved densities and interpolated
+fraction reporting a message: 0.3475
+Mencgood ran in 	 0:00:52.550000
+fraction reporting a message: 1.0
+psigood ran in 	 0:01:27.100000
+---------------------------------------------------
+Job Resources Requested:
+
+cput=100000:00:00,ncpus=1,neednodes=1:ppn=1,nodes=1:ppn=1,walltime=08:00:00
+---------------------------------------------------
+Job Resources Used:
+
+cput=00:04:11,mem=68324kb,vmem=408112kb,walltime=00:04:15
+---------------------------------------------------
+
+---------------------------------------------------
+Job Script:
+
+#!/bin/csh
+#PBS -l nodes=1:ppn=1
+#PBS -q workq
+#PBS -l walltime=08:00:00
+#PBS -N runWM
+cd $PBS_O_WORKDIR
+module load python/2.7.6
+python WMrateget.py 22
+---------------------------------------------------
+
