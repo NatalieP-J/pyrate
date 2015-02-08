@@ -1,0 +1,23 @@
+---------------------------------------------------
+Job Resources Requested:
+
+cput=100000:00:00,ncpus=1,neednodes=1:ppn=1,nodes=1:ppn=1,walltime=08:00:00
+---------------------------------------------------
+Job Resources Used:
+
+cput=06:23:43,mem=66484kb,vmem=408112kb,walltime=06:23:59
+---------------------------------------------------
+
+---------------------------------------------------
+Job Script:
+
+#!/bin/csh
+#PBS -l nodes=1:ppn=1
+#PBS -q workq
+#PBS -l walltime=08:00:00
+#PBS -N runWM
+cd $PBS_O_WORKDIR
+module load python/2.7.6
+python WMrateget.py 39
+---------------------------------------------------
+

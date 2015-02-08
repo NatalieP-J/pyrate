@@ -1,0 +1,102 @@
+Mencgood loaded in
+psigood loaded in
+Jc2good loaded in
+lggood loaded in
+bGgood loaded in
+fgood loaded in
+fraction reporting a message: 0.33
+dgdlnrpgood ran in 	 0:03:53.790000
+
+fraction reporting a message: 0.0
+Mencgood ran in 	 0:00:00.680000
+fraction reporting a message: 0.141304347826
+psigood ran in 	 0:00:01.780000
+fraction reporting a message: 0.00262697022767
+Jc2good ran in 	 0:00:09.790000
+fraction reporting a message: 0.309090909091
+lggood ran in 	 0:00:05.120000
+1 of 55
+2 of 55
+3 of 55
+4 of 55
+5 of 55
+6 of 55
+7 of 55
+8 of 55
+9 of 55
+10 of 55
+11 of 55
+12 of 55
+13 of 55
+14 of 55
+15 of 55
+16 of 55
+17 of 55
+18 of 55
+19 of 55
+20 of 55
+21 of 55
+22 of 55
+23 of 55
+24 of 55
+25 of 55
+26 of 55
+27 of 55
+28 of 55
+29 of 55
+30 of 55
+31 of 55
+32 of 55
+33 of 55
+34 of 55
+35 of 55
+36 of 55
+37 of 55
+38 of 55
+39 of 55
+40 of 55
+41 of 55
+42 of 55
+43 of 55
+44 of 55
+45 of 55
+46 of 55
+47 of 55
+48 of 55
+49 of 55
+50 of 55
+51 of 55
+52 of 55
+53 of 55
+54 of 55
+55 of 55
+fraction reporting a message: 0.0
+bGgood ran in 	 4:59:58.060000
+fraction reporting a message: 0.197580645161
+fgood ran in 	 0:01:37.770000
+fraction reporting a message: 1.0
+dgdlnrpgood ran in 	 0:11:24.910000
+
+---------------------------------------------------
+Job Resources Requested:
+
+cput=100000:00:00,ncpus=1,neednodes=1:ppn=1,nodes=1:ppn=1,walltime=48:00:00
+---------------------------------------------------
+Job Resources Used:
+
+cput=05:17:12,mem=68240kb,vmem=398684kb,walltime=05:17:42
+---------------------------------------------------
+
+---------------------------------------------------
+Job Script:
+
+#!/bin/csh
+#PBS -l nodes=1:ppn=1
+#PBS -q workq
+#PBS -l walltime=48:00:00
+#PBS -N runWM
+cd $PBS_O_WORKDIR
+module load python/2.7.6
+python WMrateget.py 9
+---------------------------------------------------
+

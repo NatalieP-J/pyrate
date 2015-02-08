@@ -1,0 +1,16 @@
+/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rhomodels.py:205: RuntimeWarning: overflow encountered in double_scalars
+  return -(self.I(r)/(r*(1+r**self.a)))*(self.G + self.B*r**self.a)
+/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rhomodels.py:205: RuntimeWarning: invalid value encountered in double_scalars
+  return -(self.I(r)/(r*(1+r**self.a)))*(self.G + self.B*r**self.a)
+/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rhomodels.py:202: RuntimeWarning: overflow encountered in double_scalars
+  return self.factor*(r**-self.G)*(1+(r**self.a))**(-(self.B-self.G)/self.a)
+/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rhomodels.py:209: RuntimeWarning: overflow encountered in double_scalars
+  return (self.I(r)/(r*(1+r**self.a))**2)*((r**(2*self.a))*self.B*(1+self.B) + self.G + (self.G**2) + (r**self.a)*(self.B-self.a*self.B + self.G + 2*self.B*self.G))
+/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rhomodels.py:209: RuntimeWarning: invalid value encountered in double_scalars
+  return (self.I(r)/(r*(1+r**self.a))**2)*((r**(2*self.a))*self.B*(1+self.B) + self.G + (self.G**2) + (r**self.a)*(self.B-self.a*self.B + self.G + 2*self.B*self.G))
+/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rhomodels.py:213: RuntimeWarning: overflow encountered in double_scalars
+  return (self.I(r)/(r*(1+r**self.a))**3)*((-r**(3*self.a))*self.B*(1+self.B)*(2+self.B) - self.G*(1 + self.G)*(2+self.G) + (r**(2*self.a))*((-1+self.a)*self.B*(4+self.a+3*self.B) - (2+(self.a**2) + 3*self.a*(1+self.B) + 3*self.B*(2+self.B))*self.G) + (r**self.a)*((1+self.a)*(-4+self.a-3*self.G)*self.G - self.B*(2+(self.a**2) - 3*self.a*(1+self.G) + 3*self.G*(2+self.G))))
+/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rhomodels.py:213: RuntimeWarning: invalid value encountered in double_scalars
+  return (self.I(r)/(r*(1+r**self.a))**3)*((-r**(3*self.a))*self.B*(1+self.B)*(2+self.B) - self.G*(1 + self.G)*(2+self.G) + (r**(2*self.a))*((-1+self.a)*self.B*(4+self.a+3*self.B) - (2+(self.a**2) + 3*self.a*(1+self.B) + 3*self.B*(2+self.B))*self.G) + (r**self.a)*((1+self.a)*(-4+self.a-3*self.G)*self.G - self.B*(2+(self.a**2) - 3*self.a*(1+self.G) + 3*self.G*(2+self.G))))
+/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/construction.py:93: RuntimeWarning: invalid value encountered in less
+  neg_test = tab[where(tab<0)]

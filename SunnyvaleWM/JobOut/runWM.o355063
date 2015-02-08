@@ -1,0 +1,97 @@
+Saved densities and interpolated
+fraction reporting a message: 0.348284960422
+Mencgood ran in 	 0:00:35.760000
+fraction reporting a message: 0.652956298201
+psigood ran in 	 0:01:00.470000
+fraction reporting a message: 0.0
+Jc2good ran in 	 0:00:06.260000
+fraction reporting a message: 0.379310344828
+lggood ran in 	 0:00:16.720000
+1 of 58
+2 of 58
+3 of 58
+4 of 58
+5 of 58
+6 of 58
+7 of 58
+8 of 58
+9 of 58
+10 of 58
+11 of 58
+12 of 58
+13 of 58
+14 of 58
+15 of 58
+16 of 58
+17 of 58
+18 of 58
+19 of 58
+20 of 58
+21 of 58
+22 of 58
+23 of 58
+24 of 58
+25 of 58
+26 of 58
+27 of 58
+28 of 58
+29 of 58
+30 of 58
+31 of 58
+32 of 58
+33 of 58
+34 of 58
+35 of 58
+36 of 58
+37 of 58
+38 of 58
+39 of 58
+40 of 58
+41 of 58
+42 of 58
+43 of 58
+44 of 58
+45 of 58
+46 of 58
+47 of 58
+48 of 58
+49 of 58
+50 of 58
+51 of 58
+52 of 58
+53 of 58
+54 of 58
+55 of 58
+56 of 58
+57 of 58
+58 of 58
+fraction reporting a message: 0.0
+bGgood ran in 	 6:51:18.530000
+fraction reporting a message: 0.227799227799
+fgood ran in 	 0:04:07.950000
+fraction reporting a message: 0.0
+dgdlnrpgood ran in 	 0:01:53.180000
+
+---------------------------------------------------
+Job Resources Requested:
+
+cput=100000:00:00,ncpus=1,neednodes=1:ppn=1,nodes=1:ppn=1,walltime=08:00:00
+---------------------------------------------------
+Job Resources Used:
+
+cput=07:00:00,mem=66308kb,vmem=406004kb,walltime=07:00:23
+---------------------------------------------------
+
+---------------------------------------------------
+Job Script:
+
+#!/bin/csh
+#PBS -l nodes=1:ppn=1
+#PBS -q workq
+#PBS -l walltime=08:00:00
+#PBS -N runWM
+cd $PBS_O_WORKDIR
+module load python/2.7.6
+python WMrateget.py 19
+---------------------------------------------------
+

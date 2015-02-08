@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "WMrateget35.py", line 26, in <module>
+    Mencgood,psigood,Jc2good,ggood,Ggood,fgood,rategood = getrate(model1)
+  File "/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rateget.py", line 38, in getrate
+    dcheck = displaycheck()
+  File "/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rateget.py", line 29, in displaycheck
+    displays = LoadData('tempdisplay')
+  File "/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/construction.py", line 28, in LoadData
+    f=open(fname,'r')
+IOError: [Errno 2] No such file or directory: 'tempdisplay'

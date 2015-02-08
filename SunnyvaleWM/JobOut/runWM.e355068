@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "WMrateget.py", line 31, in <module>
+    Mencgood,psigood,Jc2good,ggood,Ggood,fgood,rategood = getrate(model2)
+  File "/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rateget.py", line 38, in getrate
+    dcheck = displaycheck()
+  File "/mnt/scratch-lustre/njones/Summer2014/for_summer_2014/SunnyvaleWM/rateget.py", line 31, in displaycheck
+    display = displays[0]
+IndexError: list index out of range
