@@ -9,7 +9,9 @@ rtest = insert(rtest,0,-40)
 rtest = 10**rtest
 
 #independent variable array for dgdlnrp
-utest = arange(-7,0,0.01)
+utest1 = arange(-7,-4,0.01)
+utest2 = arange(-4,0,1e-4)
+utest = concatenate((utest1,utest2))
 utest = insert(utest,0,-40)
 utest = 10**utest
             
@@ -48,26 +50,25 @@ def getrate(model,partial = False):
     try:
         #print seton,plottinglist
         #dictionary of power law behaviour
-        exps = {'psi':[-1,-1],'Jc2':[-1,-1],
-                'lg':[model.b-0.5,model.g-0.5],'bG':[model.b-4,model.g-4],
-                'f':[model.b-1.5,model.g-1.5],'dgdlnrp':[2,0]}
-        exps = {'Jc2':[-1,-1],'dgdlnrp':[2,0]}
+        exps = {'dgdlnrp':[2,0]}
         
         if -model.b < -3:
             exps['Menc'] = [3-model.g,0]
             exps['psi'] = [-1,-1]
+            exps['Jc2'] = [-1,-1][::-1]
             exps['lg'] = [model.g - 0.5, model.b - 0.5][::-1]
             exps['f'] = [model.g - 1.5, model.b - 1.5][::-1]
             exps['bG'] = [model.g - 4, model.b - 4][::-1]
         if -model.b > -3:
             exps['Menc'] = [3-model.g, 3-model.b]
             exps['psi'] = [-1,2-model.b]
+            exps['Jc2'] = [-1,((4-model.b)/(2-model.b))][::-1]
             exps['lg'] = [model.g - 0.5,(((model.b - 1) + 1)/((model.b - 1) - 1)) - 0.5][::-1]
             exps['f'] = [model.g - 1.5, (((model.b - 1) + 1)/((model.b - 1) - 1)) - 1.5][::-1]
             exps['bG'] = [model.g - 4, (((model.b - 1) - 2)/((model.b - 1) - 1)) - 1][::-1]
 
         sh = {'Menc':[6,-6,0.03],'psi':[6,-6,0.03],'Jc2':[6,-6,0.01],
-              'lg':[3,-3,0.1],'bG':[3,-3,0.1],'f':[5,-3,0.03],'dgdlnrp':[0,-4,0.04]}
+              'lg':[3,-3,0.01],'bG':[3,-3,0.1],'f':[5,-3,0.03],'dgdlnrp':[0,-4,0.04]}
 
         #begin output
         model.statfile.write('GALAXY: {0}\n'.format(model.name))
