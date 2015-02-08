@@ -32,7 +32,7 @@ funcnames.update(dict.fromkeys(['Jc2','Jc2good','Jc','jc2','jc2good','jc',
 funcnames.update(dict.fromkeys(['g','ggood','lg','little g','Little g'],'lg'))
 
 #accepted keys for mathcalG
-funcnames.update(dict.fromkeys(['G','Ggood','mathcalG','mathcalGgood'],'bG'))
+funcnames.update(dict.fromkeys(['G','Ggood','mathcalG','mathcalGgood','bG'],'bG'))
 
 #accepted keys for the distribution function
 funcnames.update(dict.fromkeys(['f','DF','df','fgood','distribution',

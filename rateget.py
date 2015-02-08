@@ -48,11 +48,25 @@ def getrate(model,partial = False):
     try:
         #print seton,plottinglist
         #dictionary of power law behaviour
-        exps = {'Menc':[3-model.g,0],'psi':[-1,-1],'Jc2':[-1,-1],
+        exps = {'psi':[-1,-1],'Jc2':[-1,-1],
                 'lg':[model.b-0.5,model.g-0.5],'bG':[model.b-4,model.g-4],
                 'f':[model.b-1.5,model.g-1.5],'dgdlnrp':[2,0]}
+        exps = {'Jc2':[-1,-1]}
+        
+        if -model.b < -3:
+            exps['Menc'] = [3-model.g,0]
+            exps['psi'] = [-1,-1]
+            exps['lg'] = [model.g - 0.5, model.b - 0.5][::-1]
+            exps['f'] = [model.g - 1.5, model.b - 1.5][::-1]
+            exps['bG'] = [model.g - 4, model.b - 4][::-1]
+        if -model.b > -3:
+            exps['Menc'] = [3-model.g, 3-model.b]
+            exps['psi'] = [-1,2-model.b]
+            exps['lg'] = [model.g - 0.5,(((model.b - 1) + 1)/((model.b - 1) - 1)) - 0.5][::-1]
+            exps['f'] = [model.g - 1.5, (((model.b - 1) + 1)/((model.b - 1) - 1)) - 1.5][::-1]
+            exps['bG'] = [model.g - 4, (((model.b - 1) - 2)/((model.b - 1) - 1)) - 1][::-1]
 
-        sh = {'Menc':[4,-6,0.03],'psi':[4.3,-6,0.03],'Jc2':[3,-4,0.01],
+        sh = {'Menc':[6,-6,0.03],'psi':[6,-6,0.03],'Jc2':[6,-6,0.01],
               'lg':[3,-3,0.1],'bG':[3,-3,0.1],'f':[5,-3,0.03],'dgdlnrp':[0,-4,0.04]}
 
         #begin output

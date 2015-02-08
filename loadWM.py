@@ -23,7 +23,7 @@ def getWM():
 	return WM,names,dists,rbs,mubs,alphas,betas,gammas,M2Ls,MBH1s,MBH2s
 
 if __name__ == '__main__':
-	from rhomodels import NukerModelGenRho
+	from rhomodels import NukerModelRho
 	from rateget import getrate
 	from rhoratefcns import findrho0
 	WM,names,dists,rbs,mubs,alphas,betas,gammas,M2Ls,MBH1s,MBH2s = getWM()
@@ -43,25 +43,5 @@ if __name__ == '__main__':
 		name1 = '{0}_1'.format(names[i])
 		name2 = '{0}_2'.format(names[i])
 		GENERATE = False
-		model1 = NukerModelGenRho(name1,alpha,beta,gamma,r0pc,rho0,MBH_Msun1,GENERATE,memo = False)
-		try:
-			model1.getrho()
-		except IOError:
-			GENERATE = True
-			model1 = NukerModelGenRho(name1,alpha,beta,gamma,r0pc,rho0,MBH_Msun1,GENERATE,memo = False)
-			model1.getrho()
-			GENERATE = False
-			model1 = NukerModelGenRho(name1,alpha,beta,gamma,r0pc,rho0,MBH_Msun1,GENERATE,memo = False)
-			model1.getrho()
+		model1 = NukerModelRho(name1,alpha,beta,gamma,r0pc,rho0,MBH_Msun1,GENERATE,memo = False)
 		result1 = getrate(model1)
-		model2 = NukerModelGenRho(name2,alpha,beta,gamma,r0pc,rho0,MBH_Msun2,GENERATE,memo = False)
-		try:
-			model2.getrho()
-		except IOError:
-			GENERATE = True
-			model2 = NukerModelGenRho(name2,alpha,beta,gamma,r0pc,rho0,MBH_Msun2,GENERATE,memo = False)
-			model2.getrho()
-			GENERATE = False
-			model2 = NukerModelGenRho(name2,alpha,beta,gamma,r0pc,rho0,MBH_Msun2,GENERATE,memo = False)
-			model2.getrho()
-		result2 = getrate(model2)
