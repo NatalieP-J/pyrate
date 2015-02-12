@@ -67,8 +67,8 @@ def getrate(model,partial = False):
             exps['f'] = [model.g - 1.5, (((model.b - 1) + 1)/((model.b - 1) - 1)) - 1.5][::-1]
             exps['bG'] = [model.g - 4, (((model.b - 1) - 2)/((model.b - 1) - 1)) - 1][::-1]
 
-        sh = {'Menc':[6,-6,0.03],'psi':[6,-6,0.03],'Jc2':[6,-6,0.01],
-              'lg':[3,-3,0.01],'bG':[3,-3,0.1],'f':[5,-3,0.03],'dgdlnrp':[0,-4,0.04]}
+        sh = {'Menc':[6,-6,0.03],'psi':[4,-4,0.03],'Jc2':[4,-1,0.01],
+              'lg':[4,-1,0.01],'bG':[3,-2,0.1],'f':[5,-1,0.03],'dgdlnrp':[0,-4,0.04]}
 
         #begin output
         model.statfile.write('GALAXY: {0}\n'.format(model.name))
