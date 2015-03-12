@@ -10,7 +10,7 @@ rtest = 10**rtest
 
 #independent variable array for dgdlnrp
 utest1 = arange(-7,-4,0.01)
-utest2 = arange(-4,0,1e-4)
+utest2 = arange(-4,1,1e-4)
 utest = concatenate((utest1,utest2))
 utest = insert(utest,0,-40)
 utest = 10**utest
@@ -46,20 +46,27 @@ def getrate(model,partial = False):
     #if functions have been chosen, do not plot any
     elif partial != False:
         seton = partial[0] 
-        plottinglist = partial[1]  
+        plottinglist = partial[1] 
+
+    if model.g < 0 or model.b < 2:
+        seton = {'Menc':"OFF",'psi':"OFF",'Jc2':"OFF",'lg':"OFF",'bG':"OFF",
+                     'f':"OFF",'dgdlnrp':"OFF"}
+        plottinglist = {'Menc':False,'psi':False,'Jc2':False,'lg':False,
+                                'bG':False,'f':False,'dgdlnrp':False}
+
     try:
         #print seton,plottinglist
         #dictionary of power law behaviour
         exps = {'dgdlnrp':[2,0]}
         
-        if -model.b < -3:
+        if model.b > 3:
             exps['Menc'] = [3-model.g,0]
             exps['psi'] = [-1,-1]
             exps['Jc2'] = [-1,-1][::-1]
             exps['lg'] = [model.g - 0.5, model.b - 0.5][::-1]
             exps['f'] = [model.g - 1.5, model.b - 1.5][::-1]
             exps['bG'] = [model.g - 4, model.b - 4][::-1]
-        if -model.b > -3:
+        if model.b < 3:
             exps['Menc'] = [3-model.g, 3-model.b]
             exps['psi'] = [-1,2-model.b]
             exps['Jc2'] = [-1,((4-model.b)/(2-model.b))][::-1]
