@@ -49,8 +49,8 @@ def getrate(model,partial = False):
         plottinglist = partial[1] 
 
     if model.g < 0 or model.b < 2:
-        seton = {'Menc':"OFF",'psi':"OFF",'Jc2':"OFF",'lg':"OFF",'bG':"OFF",
-                     'f':"OFF",'dgdlnrp':"OFF"}
+        seton = {'Menc':"FAIL",'psi':"FAIL",'Jc2':"FAIL",'lg':"FAIL",'bG':"FAIL",
+                     'f':"FAIL",'dgdlnrp':"FAIL"}
         plottinglist = {'Menc':False,'psi':False,'Jc2':False,'lg':False,
                                 'bG':False,'f':False,'dgdlnrp':False}
 
