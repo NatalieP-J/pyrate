@@ -10,7 +10,7 @@ rtest = 10**rtest
 
 #independent variable array for dgdlnrp
 utest1 = arange(-7,-4,0.01)
-utest2 = arange(-4,1,1e-4)
+utest2 = arange(-4,1e-4,1e-4)
 utest = concatenate((utest1,utest2))
 utest = insert(utest,0,-40)
 utest = 10**utest
