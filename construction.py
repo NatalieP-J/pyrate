@@ -171,6 +171,15 @@ def loaddata(fname):
     f.close()
     return data
 
+def writedata(data,fname):
+    """
+    Writes a file with name fname with contents data.
+    """
+    f=open(fname,'w')
+    for i in range(len(data)):
+        f.write('{0}\n'.format(data[i]))
+    f.close()
+
 def pklread(fname):
     """
     Opens a pickled file with name fname.

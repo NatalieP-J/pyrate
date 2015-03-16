@@ -184,11 +184,13 @@ def getrate(model,partial = False):
                            exps['dgdlnrp'],plottinglist['dgdlnrp'],
                            seton['dgdlnrp'])
         
-        #if rategood != 0:
-        #    ratetot = integrator(1,rategood,-40,0,[])
+        if rategood != 0:
+            ratevals = pklread('{0}/dgdlnrp.pkl'.format(model.directory))
+            ratefn = interp1d(ratevals[:,0],ratevals[:,1])
+            ratetot = integrator(1,[ratefn,'totrate'],1e-40,1,[])[0]
         #print 'End rate'
         if rategood == 0:
-        #    ratetot = 0
+            ratetot = 0
             model.statfile.write('Failed to evaluate dgdlnrp')
         
         #close plot pdf and statusfile
@@ -203,7 +205,7 @@ def getrate(model,partial = False):
             newname = '{0}/{1}_complete.pdf'.format(model.directory,model.name)
             os.system('mv {0} {1}'.format(oldname,newname))
         print('\a')
-        return Mencgood,psigood,Jc2good,ggood,Ggood,fgood,rategood#,ratetot
+        return Mencgood,psigood,Jc2good,ggood,Ggood,fgood,rategood,ratetot
                 
     #if process interrupted, close files safely exit
     except KeyboardInterrupt:
