@@ -185,7 +185,7 @@ def getrate(model,partial = False):
                            seton['dgdlnrp'])
         
         if rategood != 0:
-            ratetot = integrator(1,rategood,-40,0)
+            ratetot = integrator(1,rategood,-40,0,[])
         #print 'End rate'
         if rategood == 0:
             ratetot = 0
