@@ -9,8 +9,8 @@ rtest = insert(rtest,0,-40)
 rtest = 10**rtest
 
 #independent variable array for dgdlnrp
-utest1 = arange(-7,-4,0.01)
-utest2 = arange(-4,1e-4,1e-4)
+utest1 = arange(-7,-3,0.01)
+utest2 = concatenate((arange(-2,-1,0.005),arange(-1,1e-4,1e-4)))
 utest = concatenate((utest1,utest2))
 utest = insert(utest,0,-40)
 utest = 10**utest
@@ -182,7 +182,7 @@ def getrate(model,partial = False):
         #print 'Start rate'
         rategood = compute(rprereqs,funcdgdlnrp,utest,sh['dgdlnrp'],stdgrid,
                            exps['dgdlnrp'],plottinglist['dgdlnrp'],
-                           seton['dgdlnrp'])
+                           seton['dgdlnrp'],10**utest2)
         
         if rategood != 0:
             ratevals = pklread('{0}/dgdlnrp.pkl'.format(model.directory))

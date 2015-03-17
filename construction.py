@@ -235,7 +235,7 @@ def piecewise(r,inter,start,end,lim1,lim2,smallrexp,largerexp):
     piece3 = end*(set3/lim2)**largerexp
     return concatenate((piece1,piece2,piece3))
 
-def makegood(prereqs,func,r,size,grid,smallrexp,largerexp,plotting):
+def makegood(prereqs,func,r,size,grid,smallrexp,largerexp,indeps = [],plotting = False):
     """
     prereqs - array containing model class instance as first element
     func - function to be evaluated
@@ -252,8 +252,11 @@ def makegood(prereqs,func,r,size,grid,smallrexp,largerexp,plotting):
     computed values.
     """
     model = prereqs[0]
-    #generate independent array grid
-    rarray,rchange,rstart = grid([model],size[0],size[1],size[2])
+    if indeps == []:
+        #generate independent array grid
+        rarray,rchange,rstart = grid([model],size[0],size[1],size[2])
+    if indeps != []:
+        rarray,rchange,rstart = indeps,indeps[-1],indeps[0]
     #compute value of function for grid points
     tab,problems = func(rarray,prereqs)
     frac = float(len(problems))/float(len(tab))
@@ -296,7 +299,7 @@ def makegood(prereqs,func,r,size,grid,smallrexp,largerexp,plotting):
     elif gcheck == False:
         return 0
 
-def compute(dependencies,function,rtest,size,grid,exps,plotdat,create):
+def compute(dependencies,function,rtest,size,grid,exps,plotdat,create,indeps = []):
     """
     dependencies - other functions needed to compute this one, 
                    format [model,"model",func1, "func1",func2,"func2",...]
@@ -332,7 +335,7 @@ def compute(dependencies,function,rtest,size,grid,exps,plotdat,create):
             #time the process and write it to console and file
             smallrexp,largerexp = exps
             tic = time.clock()
-            good = makegood(prereqs,function,rtest,size,grid,smallrexp,largerexp,plotting = plotdat)
+            good = makegood(prereqs,function,rtest,size,grid,smallrexp,largerexp,indeps,plotting = plotdat)
             toc = time.clock()
             delt = toc-tic
             print '{0}good ran in \t {1}'.format(strname,str(datetime.timedelta(seconds=delt)))
